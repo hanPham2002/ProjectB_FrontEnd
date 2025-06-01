@@ -12,13 +12,21 @@ const comfortaa = Comfortaa({
     weight: ['400', '700'], // tùy chỉnh mức độ đậm bạn muốn dùng
 });
 
+interface OpeningTime {
+    start: string; // "06:00"
+    end: string;   // "12:00"
+}
 
 interface DataType {
     key: string;
     id: string;
-    categoryName:string;
-    item:string;
-    type: string;
+    title : string;
+    image: string;
+    phoneNumber: string;
+    address: string;
+    description: string;
+    openingTime: OpeningTime;
+
 
 }
 
@@ -26,53 +34,68 @@ const data: DataType[] = [
     {
         key: '1',
         id: '1',
-        categoryName:'Food and drink',
-        item: "/foodAndDrink.png",
-        type: 'Expense'
+        title : 'Banh Mi ',
+        image: '/banhmi.png',
+        phoneNumber:' 0938133989',
+        address:' 50 Hung Vuong,Thu Dau Mot, Binh Duong',
+        description:'The water here is delicious, the staff is friendly.',
+        openingTime: {
+            start:"06:00",
+            end: '12:00'
+        }
     },
-    // {
-    //     key: '2',
-    //     id: '2',
-    //     categoryName:'Education',
-    //     item: "/education.png",
-    //     type: 'Expense'
-    // },
-    // {
-    //     key: '3',
-    //     id: '3',
-    //     categoryName:'Help family',
-    //     item: "/helpFamily.png",
-    //     type: 'Goal'
-    // },
-    // {
-    //     key: '4',
-    //     id: '4',
-    //     categoryName:'Reserve fund',
-    //     item: "/reserveFund.png",
-    //     type: 'Goal'
-    // },
-    // {
-    //     key: '5',
-    //     id: '5',
-    //     categoryName:'Salary',
-    //     item: "/salary.png",
-    //     type: 'Income'
-    // },
-    // {
-    //     key: '6',
-    //     id: '6',
-    //     categoryName:'Dating',
-    //     item: "/dating.png",
-    //     type: 'Expense'
-    // },
-    // {
-    //     key: '7',
-    //     id: '7',
-    //     categoryName:'Pet',
-    //     item: "/pet.png",
-    //     type: 'Expense'
-    // },
-
+    {
+        key: '1',
+        id: '1',
+        title : 'Banh Mi ',
+        image: '/banhmi.png',
+        phoneNumber:' 0938133989',
+        address:' 50 Hung Vuong,Thu Dau Mot, Binh Duong',
+        description:'The water here is delicious, the staff is friendly.',
+        openingTime: {
+            start:"06:00",
+            end: '12:00'
+        }
+    },
+    {
+        key: '1',
+        id: '1',
+        title : 'Banh Mi ',
+        image: '/banhmi.png',
+        phoneNumber:' 0938133989',
+        address:' 50 Hung Vuong,Thu Dau Mot, Binh Duong',
+        description:'The water here is delicious, the staff is friendly.',
+        openingTime: {
+            start:"06:00",
+            end: '12:00'
+        }
+    },
+    {
+        key: '1',
+        id: '1',
+        title : 'Banh Mi ',
+        image: '/banhmi.png',
+        phoneNumber:' 0938133989',
+        address:' 50 Hung Vuong,Thu Dau Mot, Binh Duong',
+        description:'The water here is delicious, the staff is friendly.',
+        openingTime: {
+            start:"06:00",
+            end: '12:00'
+        }
+    },
+    {
+        key: '1',
+        id: '1',
+        title : 'Banh Mi ',
+        image: '/banhmi.png',
+        phoneNumber:' 0938133989',
+        address:' 50 Hung Vuong,Thu Dau Mot, Binh Duong',
+        description:'The water here is delicious, the staff is friendly.',
+        openingTime: {
+            start:"06:00",
+            end: '12:00'
+        }
+    },
 ];
 export default function SignUpEmail() {
     const [tableData, setTableData] = useState<DataType[]>(data);
@@ -80,6 +103,7 @@ export default function SignUpEmail() {
     const [editCategoryName
         , setCategoryName
     ] = useState<DataType | null>(null);
+
 // hai popconfirm của delete và edit
     const confirm: PopconfirmProps['onConfirm'] = (e) => {
         console.log(e);
@@ -90,24 +114,13 @@ export default function SignUpEmail() {
         message.error('Click on No');
     };
 
-    // Hàm mở Modal khi click Edit:
-    // record chính là dữ liệu của một hàng (row) trong bảng antd Table. Khi bạn click vào biểu tượng EditOutlined ở một dòng cụ thể, record sẽ chứa toàn bộ thông tin của dòng đó.
-    const handleEdit = (record: DataType) => {
-        setCategoryName
-        (record);
-        setIsModalOpen(true);
-    };
 
     // hàm delete
     const handleDelete = (record: DataType) => {
         setTableData(prev => prev.filter(item => item.key !== record.key));
-        message.success(`Deleted ${record.categoryName}`);
+        message.success(`Deleted ${record.title}`);
     };
-    //hàm khi change status thì  nó sẽ set và đổ lại lên account status
-    const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
-    const handleStatusChange = (status: string) => {
-        setSelectedStatus(status);
-    };
+
 
     const columns: TableProps<DataType>['columns'] = [
         {
@@ -118,29 +131,41 @@ export default function SignUpEmail() {
             render:(text) => <strong>{text}</strong>
         },
         {
-            title: 'Category Name',
-            dataIndex: 'categoryName',
-            key: 'categoryName',
+            title: 'Title',
+            dataIndex: 'title',
+            key: 'title',
             align: 'center',
             render:(text) => <strong>{text}</strong>
         },
         {
-            title: 'Item',
-            dataIndex: 'item',
-            key: 'item',
+            title: 'Image',
+            dataIndex: 'image',
+            key: 'image',
             align: 'center',
             render:(src,record) =>(
                 <img
                     src={src}
-                    alt={record.categoryName}
-                    style={{ width: 32, height: 32 }}
+                    alt={record.title}
+                    style={{ width: 70, height: 70, borderRadius: 30 }}
                 />
             )
         },
         {
-            title: 'Type',
-            dataIndex: 'type',
-            key: 'type',
+            title: 'Phone Number',
+            dataIndex: 'phoneNumber',
+            key: 'phoneNumber',
+            align: 'center',
+        },
+        {
+            title: 'Address',
+            dataIndex: 'address',
+            key: 'address',
+            align: 'center',
+        },
+        {
+            title: 'Description',
+            dataIndex: 'description',
+            key: 'description',
             align: 'center',
         },
         {
@@ -151,7 +176,8 @@ export default function SignUpEmail() {
                 <div style={{ display: 'flex',justifyContent:"center", gap: '15px' }}>
                     <Tooltip title="Edit">
                         <EditOutlined style={{ color: '#1890ff',cursor: 'pointer', fontSize: '18px' }}
-                                      onClick={() => handleEdit(record)}/>
+                                     />
+                        {/*onClick={() => handleEdit(record)}*/}
                     </Tooltip>
                     <Tooltip title="Delete">
                         <Popconfirm  title="Delete"
@@ -183,72 +209,72 @@ export default function SignUpEmail() {
 
                     </div>
                     {/*modal khi click edit*/}
-                    <div >
-                        <Modal
-                            title={<span style={{ color: 'black', fontWeight: 'bold' }}>Edit Account Status</span>}
-                            open={isModalOpen}
-                            onOk={() => setIsModalOpen(false)}
-                            onCancel={() => {
-                                setIsModalOpen(false);
-                                setSelectedStatus(null);}}
-                            footer={[
-                                <Button key="cancel" onClick={() => {
-                                    setIsModalOpen(false);
-                                    setSelectedStatus(null);
-                                }}>
-                                    Cancel
-                                </Button>,
-                                <Button
-                                    key="update"
-                                    type="primary"
-                                    onClick={() => {
-                                        if (editCategoryName
-                                            && selectedStatus) {
-                                            const updatedData = tableData.map(user =>
-                                                user.key === editCategoryName
-                                                    .key
-                                                    ? { ...user, status: selectedStatus }
-                                                    : user
-                                            );
-                                            setTableData(updatedData);
-                                            setIsModalOpen(false);
-                                            setSelectedStatus(null);
-                                            // message.success(`Updated category name to ${selectedStatus} for ${editCategoryName
-                                            //     .fullName}`);
-                                        } else {
-                                            message.warning('Please select a status');
-                                        }
-                                    }}
-                                >
-                                    Update
-                                </Button>,
-                            ]}
-                        >
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                                <Checkbox
-                                    checked={selectedStatus === 'Active'}
-                                    onChange={() => handleStatusChange('Active')}
-                                    style={{  }}
-                                >
-                                    Active
-                                </Checkbox>
-                                <Checkbox
-                                    checked={selectedStatus === 'Pending Verification'}
-                                    onChange={() => handleStatusChange('Pending Verification')}
-                                    style={{}}
-                                >
-                                    Pending Verification
-                                </Checkbox>
-                                <Checkbox
-                                    checked={selectedStatus === 'Banned'}
-                                    onChange={() => handleStatusChange('Banned')}
-                                    style={{  }}
-                                >
-                                    Banned
-                                </Checkbox>
-                            </div>
-                        </Modal>
-                    </div>
+                    {/*<div >*/}
+                    {/*    <Modal*/}
+                    {/*        title={<span style={{ color: 'black', fontWeight: 'bold' }}>Edit Account Status</span>}*/}
+                    {/*        open={isModalOpen}*/}
+                    {/*        onOk={() => setIsModalOpen(false)}*/}
+                    {/*        onCancel={() => {*/}
+                    {/*            setIsModalOpen(false);*/}
+                    {/*            setSelectedStatus(null);}}*/}
+                    {/*        footer={[*/}
+                    {/*            <Button key="cancel" onClick={() => {*/}
+                    {/*                setIsModalOpen(false);*/}
+                    {/*                setSelectedStatus(null);*/}
+                    {/*            }}>*/}
+                    {/*                Cancel*/}
+                    {/*            </Button>,*/}
+                    {/*            <Button*/}
+                    {/*                key="update"*/}
+                    {/*                type="primary"*/}
+                    {/*                onClick={() => {*/}
+                    {/*                    if (editCategoryName*/}
+                    {/*                        && selectedStatus) {*/}
+                    {/*                        const updatedData = tableData.map(user =>*/}
+                    {/*                            user.key === editCategoryName*/}
+                    {/*                                .key*/}
+                    {/*                                ? { ...user, status: selectedStatus }*/}
+                    {/*                                : user*/}
+                    {/*                        );*/}
+                    {/*                        setTableData(updatedData);*/}
+                    {/*                        setIsModalOpen(false);*/}
+                    {/*                        setSelectedStatus(null);*/}
+                    {/*                        // message.success(`Updated category name to ${selectedStatus} for ${editCategoryName*/}
+                    {/*                        //     .fullName}`);*/}
+                    {/*                    } else {*/}
+                    {/*                        message.warning('Please select a status');*/}
+                    {/*                    }*/}
+                    {/*                }}*/}
+                    {/*            >*/}
+                    {/*                Update*/}
+                    {/*            </Button>,*/}
+                    {/*        ]}*/}
+                    {/*    >*/}
+                    {/*        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>*/}
+                    {/*            <Checkbox*/}
+                    {/*                checked={selectedStatus === 'Active'}*/}
+                    {/*                onChange={() => handleStatusChange('Active')}*/}
+                    {/*                style={{  }}*/}
+                    {/*            >*/}
+                    {/*                Active*/}
+                    {/*            </Checkbox>*/}
+                    {/*            <Checkbox*/}
+                    {/*                checked={selectedStatus === 'Pending Verification'}*/}
+                    {/*                onChange={() => handleStatusChange('Pending Verification')}*/}
+                    {/*                style={{}}*/}
+                    {/*            >*/}
+                    {/*                Pending Verification*/}
+                    {/*            </Checkbox>*/}
+                    {/*            <Checkbox*/}
+                    {/*                checked={selectedStatus === 'Banned'}*/}
+                    {/*                onChange={() => handleStatusChange('Banned')}*/}
+                    {/*                style={{  }}*/}
+                    {/*            >*/}
+                    {/*                Banned*/}
+                    {/*            </Checkbox>*/}
+                    {/*        </div>*/}
+                    {/*    </Modal>*/}
+                    {/*</div>*/}
 
                 </Layout>
 
