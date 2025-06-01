@@ -79,8 +79,8 @@ export default function RootLayout({
                         className={comfortaa.className}
                         style={{
                             ...textMenuStyles,
-                            color: isActive('/adminDashboard-sugestDishes') ? "#03346E" : "#636668",
-                            borderBottom: isActive('/adminDashboard-sugestDishes') ? '2px solid #03346E' : 'none',
+                            color: isActive('/adminDashboard-manageCategories/adminDashboard-suggestDishes') ? "#03346E" : "#636668",
+                            borderBottom: isActive('/adminDashboard-manageCategories/adminDashboard-suggestDishes') ? '2px solid #03346E' : 'none',
                         }}
                         onClick={() => router.push('/adminDashboard-manageCategories/adminDashboard-suggestDishes')}
                     >
@@ -91,8 +91,8 @@ export default function RootLayout({
                         className={comfortaa.className}
                         style={{
                             ...textMenuStyles,
-                            color: isActive('/adminDashboard-suggestLocation') ? "#03346E" : "#636668",
-                            borderBottom: isActive('/adminDashboard-suggestLocation') ? '2px solid #03346E' : 'none',
+                            color: isActive('/adminDashboard-manageCategories/adminDashboard-suggestLocation') ? "#03346E" : "#636668",
+                            borderBottom: isActive('/adminDashboard-manageCategories/adminDashboard-suggestLocation') ? '2px solid #03346E' : 'none',
                         }}
                         onClick={() => router.push('/adminDashboard-manageCategories/adminDashboard-suggestLocation')}
                     >
