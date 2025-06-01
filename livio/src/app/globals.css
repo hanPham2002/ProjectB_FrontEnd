@@ -1,0 +1,109 @@
+
+/*.ant-menu-dark .ant-menu-item:hover {*/
+/*    background-color: #1f1f1f !important;*/
+/*}*/
+/* Fix hover lệch icon menu Ant Design */
+
+.ant-menu-item {
+    transition: none !important;           /* Tắt hiệu ứng chuyển động khi hover để tránh icon bị nhảy */
+    padding: 13px !important;              /* Đảm bảo padding cố định để icon không bị lệch khi hover */
+    display: flex;                         /* Sử dụng flexbox để canh chỉnh icon */
+    justify-content: center;              /* Căn icon vào giữa theo chiều ngang */
+    align-items: center;                  /* Căn icon vào giữa theo chiều dọc */
+    height: 60px;                         /* Cố định chiều cao để các item có kích thước đồng đều */
+    width: 60px;                          /* Cố định chiều rộng để icon nằm gọn và không bị lệch */
+    border-radius: 10px;
+    margin: 0 auto;/* Bo tròn các góc cho đẹp hơn khi hover */
+    position: relative;
+    z-index: 1;
+}
+
+.ant-menu-item:hover {
+    background-color: transparent !important; /* remove mặc định */
+}
+
+.ant-menu-item > * {
+    position: relative;
+    z-index: 2;   /* nội dung trên nền hover */
+}
+.ant-menu-item::after {
+    display: none !important;
+}
+.ant-menu-item:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 2px; /* dịch sang phải hoặc trái tuỳ chỉnh */
+    width: 56px; /* điều chỉnh để cân */
+    height: 100%;
+    background-color: #cfd9e3; /* màu hover */
+    border-radius: 10px;
+    z-index: 0;
+}
+/*adminDashboard-userList*/
+.custom-search .ant-input {
+    height: 40px !important;
+    width: 300px !important;
+    font-size: 16px;
+    border-radius: 30px;
+    margin-top: 7px;
+    color: coral;
+}
+
+.custom-search .ant-input-search-button {
+    height: 40px !important;
+    border-radius: 30px;
+    margin-top: 7px;
+    box-shadow: none;
+}
+/* Căn chỉnh bảng */
+.ant-table {
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #DCE5F2 !important;
+
+}
+
+.custom-table-wrapper .ant-table-tbody > tr > td {
+    background: #F2F9FF;
+    border-radius: 16px;
+}
+
+.custom-table-wrapper .ant-table-tbody > tr {
+    background: transparent;
+    background-color: #DCE5F2;
+}
+
+.custom-table-wrapper table {
+   border-radius: 20px !important   ;
+    border-spacing: 0 16px; /* Khoảng cách giữa các dòng */
+}
+.ant-table-tbody > tr > td {
+    border: none;
+    border-radius: 0px !important;
+}
+
+/*custom cho header của table*/
+.custom-table-wrapper .ant-table-thead > tr > th {
+    background-color: #004080;  /* Màu nền */
+    color: white;               /* Màu chữ */
+    font-size: 16px;            /* Size chữ */
+    font-weight: bold;
+    text-align: center;
+    border: 30px !important;
+}
+/*khi hover vào phần card sẽ hiện màu đen*/
+.ant-table-tbody > tr:hover {
+    border: 1px solid #000; /* viền đen */
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05); /* thêm hiệu ứng nếu muốn */
+    cursor: pointer;
+}
+.user-table {
+    min-height: 500px; /* hoặc giá trị tùy bạn */
+    position: relative;
+}
+
+.user-table .ant-table-body {
+    max-height: 400px;
+    overflow-y: auto;
+}
