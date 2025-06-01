@@ -1,5 +1,5 @@
 'use client'
-
+//layout manageCategories
 import React, {useState} from "react";
 import {Col, Row,Input, Space,Button} from "antd";
 import type { GetProps } from 'antd';
@@ -27,8 +27,9 @@ export default function RootLayout({
     const router = useRouter();
     const isActive = (path: string) => pathname === path;
 
+
     const titleStyles: React.CSSProperties = {
-       color: '#03346E',
+        color: '#03346E',
         marginLeft: 40,
 
     };
@@ -40,11 +41,13 @@ export default function RootLayout({
 
     }
 
+
     const textMenuStyles: React.CSSProperties={
-        color: "#636668",
+        color: pathname === '/adminDashboard-userList' ? "#03346E" : "#636668",
         fontSize: '20px',
         marginRight:50,
         height: 80,
+        borderBottom: pathname === '/adminDashboard-userList' ? '2px solid #03346E' : 'none',
         display: 'inline-block',
         width: 'fit-content',
         paddingBottom: 4,
@@ -107,7 +110,7 @@ export default function RootLayout({
                         }}
                         onClick={() => router.push('/adminDashboard-manageCategories')}
                     >
-                        Manage Categories
+                        Manage Categories 
                     </div>
                     <Space className={comfortaa.className} direction="vertical">
                         <Search  placeholder="Search categoty, name ...."
@@ -116,6 +119,37 @@ export default function RootLayout({
                                  size="large"
                         />
                     </Space>
+
+                    {/*nút add new*/}
+                    <Button
+                        type="primary"
+                        icon={
+                            <Image
+                                src="/addButton.png"
+                                alt="Add Button"
+                                width={23}
+                                height={23}
+                                style={{
+                                    filter: 'invert(1)'
+                                    // invert(1) hay invert(100%): đảo toàn bộ màu (đen → trắng, trắng → đen).
+                                }}
+                            />
+                        }
+                        style={{
+                            backgroundColor: '#123E70',
+                            borderRadius: 25,
+                            height: 45,
+                            paddingInline: 20,
+                            display: 'flex',
+                            alignItems: 'center',
+                            marginLeft: 50,
+                            fontSize:20,
+                            marginTop: 2
+                        }}
+                        className={comfortaa.className}
+                    >
+                        Add new
+                    </Button>
                     <Button
                         type="primary"
                         icon={
