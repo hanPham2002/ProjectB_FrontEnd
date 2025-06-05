@@ -70,10 +70,10 @@ export default function RootLayout({
                         className={comfortaa.className}
                         style={{
                             ...textMenuStyles,
-                            color: isActive('/adminDashboard-userList') ? "#03346E" : "#636668",
-                            borderBottom: isActive('/adminDashboard-userList') ? '2px solid #03346E' : 'none',
+                            color: isActive('/admin/management/users') ? "#03346E" : "#636668",
+                            borderBottom: isActive('/admin/management/users') ? '2px solid #03346E' : 'none',
                         }}
-                        onClick={() => router.push('/adminDashboard-userList')}
+                        onClick={() => router.push('/admin/management/users')}
                     >
                         User List
                     </div>
@@ -82,10 +82,10 @@ export default function RootLayout({
                         className={comfortaa.className}
                         style={{
                             ...textMenuStyles,
-                            color: isActive('/adminDashboard-suggestDishes') ? "#03346E" : "#636668",
-                            borderBottom: isActive('/adminDashboard-suggestDishes') ? '2px solid #03346E' : 'none',
+                            color: isActive('/admin/management/dishes') ? "#03346E" : "#636668",
+                            borderBottom: isActive('/admin/management/dishes') ? '2px solid #03346E' : 'none',
                         }}
-                        onClick={() => router.push('/adminDashboard-suggestDishes')}
+                        onClick={() => router.push('/admin/management/dishes')}
                     >
                         Suggest Dishes
                     </div>
@@ -94,10 +94,10 @@ export default function RootLayout({
                         className={comfortaa.className}
                         style={{
                             ...textMenuStyles,
-                            color: isActive('/adminDashboard-suggestLocation') ? "#03346E" : "#636668",
-                            borderBottom: isActive('/adminDashboard-suggestLocation') ? '2px solid #03346E' : 'none',
+                            color: isActive('/admin/management/locations') ? "#03346E" : "#636668",
+                            borderBottom: isActive('/admin/management/locations') ? '2px solid #03346E' : 'none',
                         }}
-                        onClick={() => router.push('adminDashboard-suggestLocation')}
+                        onClick={() => router.push('/admin/management/locations')}
                     >
                         Suggest Location
                     </div>
@@ -105,12 +105,12 @@ export default function RootLayout({
                         className={comfortaa.className}
                         style={{
                             ...textMenuStyles,
-                            color: isActive('/adminDashboard-manageCategories') ? "#03346E" : "#636668",
-                            borderBottom: isActive('/adminDashboard-manageCategories') ? '2px solid #03346E' : 'none',
+                            color: isActive('/admin/management/categories') ? "#03346E" : "#636668",
+                            borderBottom: isActive('/admin/management/categories') ? '2px solid #03346E' : 'none',
                         }}
-                        onClick={() => router.push('/adminDashboard-manageCategories')}
+                        onClick={() => router.push('/admin/management/categories')}
                     >
-                        Manage Categories 
+                        Manage Categories
                     </div>
                     <Space className={comfortaa.className} direction="vertical">
                         <Search  placeholder="Search categoty, name ...."

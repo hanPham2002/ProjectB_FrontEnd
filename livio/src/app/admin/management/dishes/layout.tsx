@@ -1,5 +1,5 @@
 'use client'
-
+//layout manageCategories
 import React, {useState} from "react";
 import {Col, Row,Input, Space,Button} from "antd";
 import type { GetProps } from 'antd';
@@ -27,8 +27,9 @@ export default function RootLayout({
     const router = useRouter();
     const isActive = (path: string) => pathname === path;
 
+
     const titleStyles: React.CSSProperties = {
-       color: '#03346E',
+        color: '#03346E',
         marginLeft: 40,
 
     };
@@ -40,11 +41,13 @@ export default function RootLayout({
 
     }
 
+
     const textMenuStyles: React.CSSProperties={
-        color: "#636668",
+        color: pathname === '/adminDashboard-userList' ? "#03346E" : "#636668",
         fontSize: '20px',
         marginRight:50,
         height: 80,
+        borderBottom: pathname === '/adminDashboard-userList' ? '2px solid #03346E' : 'none',
         display: 'inline-block',
         width: 'fit-content',
         paddingBottom: 4,
@@ -67,10 +70,10 @@ export default function RootLayout({
                         className={comfortaa.className}
                         style={{
                             ...textMenuStyles,
-                            color: isActive('/adminDashboard-userList') ? "#03346E" : "#636668",
-                            borderBottom: isActive('/adminDashboard-userList') ? '2px solid #03346E' : 'none',
+                            color: isActive('/admin/management/users') ? "#03346E" : "#636668",
+                            borderBottom: isActive('/admin/management/users') ? '2px solid #03346E' : 'none',
                         }}
-                        onClick={() => router.push('/adminDashboard-userList')}
+                        onClick={() => router.push('/admin/management/users')}
                     >
                         User List
                     </div>
@@ -79,10 +82,10 @@ export default function RootLayout({
                         className={comfortaa.className}
                         style={{
                             ...textMenuStyles,
-                            color: isActive('/adminDashboard-suggestDishes') ? "#03346E" : "#636668",
-                            borderBottom: isActive('/adminDashboard-suggestDishes') ? '2px solid #03346E' : 'none',
+                            color: isActive('/admin/management/dishes') ? "#03346E" : "#636668",
+                            borderBottom: isActive('/admin/management/dishes') ? '2px solid #03346E' : 'none',
                         }}
-                        onClick={() => router.push('/adminDashboard-suggestDishes')}
+                        onClick={() => router.push('/admin/management/dishes')}
                     >
                         Suggest Dishes
                     </div>
@@ -91,10 +94,10 @@ export default function RootLayout({
                         className={comfortaa.className}
                         style={{
                             ...textMenuStyles,
-                            color: isActive('/adminDashboard-suggestLocation') ? "#03346E" : "#636668",
-                            borderBottom: isActive('/adminDashboard-suggestLocation') ? '2px solid #03346E' : 'none',
+                            color: isActive('/admin/management/locations') ? "#03346E" : "#636668",
+                            borderBottom: isActive('/admin/management/locations') ? '2px solid #03346E' : 'none',
                         }}
-                        onClick={() => router.push('adminDashboard-suggestLocation')}
+                        onClick={() => router.push('/admin/management/locations')}
                     >
                         Suggest Location
                     </div>
@@ -102,10 +105,10 @@ export default function RootLayout({
                         className={comfortaa.className}
                         style={{
                             ...textMenuStyles,
-                            color: isActive('/adminDashboard-manageCategories') ? "#03346E" : "#636668",
-                            borderBottom: isActive('/adminDashboard-manageCategories') ? '2px solid #03346E' : 'none',
+                            color: isActive('/admin/management/categories') ? "#03346E" : "#636668",
+                            borderBottom: isActive('/admin/management/categories') ? '2px solid #03346E' : 'none',
                         }}
-                        onClick={() => router.push('/adminDashboard-manageCategories')}
+                        onClick={() => router.push('/admin/management/categories')}
                     >
                         Manage Categories
                     </div>
@@ -116,6 +119,37 @@ export default function RootLayout({
                                  size="large"
                         />
                     </Space>
+
+                    {/*nút add new*/}
+                    <Button
+                        type="primary"
+                        icon={
+                            <Image
+                                src="/addButton.png"
+                                alt="Add Button"
+                                width={23}
+                                height={23}
+                                style={{
+                                    filter: 'invert(1)'
+                                    // invert(1) hay invert(100%): đảo toàn bộ màu (đen → trắng, trắng → đen).
+                                }}
+                            />
+                        }
+                        style={{
+                            backgroundColor: '#123E70',
+                            borderRadius: 25,
+                            height: 45,
+                            paddingInline: 20,
+                            display: 'flex',
+                            alignItems: 'center',
+                            marginLeft: 50,
+                            fontSize:20,
+                            marginTop: 2
+                        }}
+                        className={comfortaa.className}
+                    >
+                        Add new
+                    </Button>
                     <Button
                         type="primary"
                         icon={
